@@ -1,4 +1,4 @@
-import { Network, RewardToken, StakingToken, ALCHEMY_PROJECT_ID, Platform } from '../constants'
+import { Network, RewardToken, StakingToken, RPC_URL, Platform } from '../constants'
 import {
   AppGeysersList,
   NetworkConfig,
@@ -18,7 +18,7 @@ const networkConfig: NetworkConfig = {
     chainId: 1,
     ref: 'mainnet',
     name: 'Ethereum',
-    rpcUrl: `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_PROJECT_ID}`,
+    rpcUrl: RPC_URL,
     graphUrl: `https://web-api.ampleforth.org/graph/ampleforth-token-geyser`,
     explorerUrl: 'https://etherscan.io/tx',
     nativeCurrency: {

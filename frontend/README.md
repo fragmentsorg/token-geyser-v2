@@ -24,7 +24,7 @@ The following are the main elements that need to be configured prior to deployin
 2. [Environment variable `NODE_ENV`](#process-environment)
 3. [Geysers configuration](#geyser-specific-configuration)
 4. [List of additional tokens for vault management](#list-of-additional-tokens)
-5. [Infura Project ID](#ethereum-provider)
+5. [Ethereum RPC endpoint](#ethereum-provider)
 
 ## GraphQL Endpoint
 
@@ -177,7 +177,13 @@ const mainnetAdditionalTokens = [
 
 ## Ethereum Provider
 
-To use Infura as provider, replace the value of `INFURA_PROJECT_ID` under `src/constants.ts` with your Infura Project ID. This is only used for mainnet.
+Chain reads go through web-api's read-only JSON-RPC proxy, `https://web-api.ampleforth.org/rpc/ethereum`,
+which holds the node keys, so the bundle carries none (`RPC_URL` in `src/constants.ts`). Set
+`REACT_APP_RPC_URL` to use another endpoint, such as a local API's `/rpc/ethereum`. Once a wallet
+connects, reads go through the wallet's own provider instead.
+
+The proxy accepts only read methods, and limits `eth_getLogs` to one address list and 2,000 blocks.
+Its WAF limits each visitor to 300 requests per 5 minutes across all our sites.
 
 ## Stats
 

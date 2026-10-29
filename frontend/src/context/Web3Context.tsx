@@ -9,11 +9,9 @@ import walletConnectModule from '@web3-onboard/walletconnect'
 import { providers } from 'ethers'
 import { StaticJsonRpcProvider } from '@ethersproject/providers'
 import { getConnectionConfig, activeNetworks } from 'config/app'
-import { Network, ALCHEMY_PROJECT_ID } from '../constants'
+import { Network, RPC_URL } from '../constants'
 
-const DEFAULT_RPC_ENDPOINT = `https://eth-mainnet.g.alchemy.com/v2/${ALCHEMY_PROJECT_ID}`
-
-const defaultProvider = new StaticJsonRpcProvider(DEFAULT_RPC_ENDPOINT, {
+const defaultProvider = new StaticJsonRpcProvider(RPC_URL, {
   name: 'mainnet',
   chainId: 1,
 })
@@ -88,7 +86,6 @@ init({
     desktop: { enabled: false },
     mobile: { enabled: false },
   },
-  apiKey: ALCHEMY_PROJECT_ID,
 })
 
 const Web3Provider = ({ children }) => {

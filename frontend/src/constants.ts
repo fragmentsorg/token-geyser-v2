@@ -122,12 +122,9 @@ export enum Align {
   CENTER,
 }
 
-// Alchemy
-export const ALCHEMY_PROJECT_ID =
-  process.env.NODE_ENV === 'development' ? process.env.REACT_APP_ALCHEMY_PROJECT_ID : 'ZHxuumw69-t77RswGL845CVVHQYja1bG'
-
-// Infura
-export const INFURA_PROJECT_ID = 'dee1a87a734042fcabc2fd116a7b776d'
+// Chain reads go through web-api's read-only JSON-RPC proxy, which holds the node keys, so the
+// bundle carries none. Set REACT_APP_RPC_URL to point at another endpoint, e.g. a local API.
+export const RPC_URL = process.env.REACT_APP_RPC_URL || 'https://web-api.ampleforth.org/rpc/ethereum'
 
 // Enable withdrawing whole unlocked balance of staking tokens when unstaking
 export const WITHDRAW_UNLOCKED_STAKING_TOKENS_WHEN_UNSTAKING = false
